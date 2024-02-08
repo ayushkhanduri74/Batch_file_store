@@ -74,16 +74,7 @@ async def start(bot: Client, cmd: Message):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("BotsList Channel", url="https://t.me/+IezzVbvzlKxlODY1")
-                    ],
-                    [
-                        InlineKeyboardButton("About Bot", callback_data="aboutbot"),
-                        InlineKeyboardButton("About Dev", callback_data="aboutdevs"),
-                        InlineKeyboardButton("Close 🚪", callback_data="closeMessage")
-                    ],
-                    [
-                        InlineKeyboardButton("Bots Channel", url="https://t.me/greymatter_bots"),
-                        InlineKeyboardButton(" Support Group", url="https://t.me/greymatters_bots_discussion")
+                        InlineKeyboardButton("Updates Channel", url="https://t.me/master793")
                     ]
                 ]
             )
@@ -124,7 +115,7 @@ async def main(bot: Client, message: Message):
                 return
 
         if message.from_user.id in Config.BANNED_USERS:
-            await message.reply_text("Sorry, You are banned!\n\nContact [Support Group](https://t.me/greymatters_bots_discussion)",
+            await message.reply_text("Sorry, You are banned!\n\nContact @master793bot)",
                                      disable_web_page_preview=True)
             return
 
@@ -152,7 +143,7 @@ async def main(bot: Client, message: Message):
         try:
             forwarded_msg = await message.forward(Config.DB_CHANNEL)
             file_er_id = str(forwarded_msg.id)
-            share_link = f"https://t.me/{Config.BOT_USERNAME}?start=GreyMatter_{str_to_b64(file_er_id)}"
+            share_link = f"https://t.me/{Config.BOT_USERNAME}?start=MASTER793_{str_to_b64(file_er_id)}"
             CH_edit = await bot.edit_message_reply_markup(message.chat.id, message.id,
                                                           reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(
                                                               "Get Sharable Link", url=share_link)]]))
@@ -311,65 +302,8 @@ async def clear_user_batch(bot: Client, m: Message):
 async def button(bot: Client, cmd: CallbackQuery):
 
     cb_data = cmd.data
-    if "aboutbot" in cb_data:
-        await cmd.message.edit(
-            Config.ABOUT_BOT_TEXT,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton("Source Codes of Bot",
-                                             url="https://bit.ly/3TddbNg")
-                    ],
-                    [
-                        InlineKeyboardButton("Go Home", callback_data="gotohome"),
-                        InlineKeyboardButton("About Dev", callback_data="aboutdevs")
-                    ]
-                ]
-            )
-        )
-
-    elif "aboutdevs" in cb_data:
-        await cmd.message.edit(
-            Config.ABOUT_DEV_TEXT,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton("Source Codes of Bot",
-                                             url="https://bit.ly/3TddbNg")
-                    ],
-                    [
-                        InlineKeyboardButton("About Bot", callback_data="aboutbot"),
-                        InlineKeyboardButton("Go Home", callback_data="gotohome")
-                    ]
-                ]
-            )
-        )
-
-    elif "gotohome" in cb_data:
-        await cmd.message.edit(
-            Config.HOME_TEXT.format(cmd.message.chat.first_name, cmd.message.chat.id),
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton("BotsList Channel", url="https://t.me/+IezzVbvzlKxlODY1")
-                    ],
-                    [
-                        InlineKeyboardButton("About Bot", callback_data="aboutbot"),
-                        InlineKeyboardButton("About Dev", callback_data="aboutdevs"),
-                        InlineKeyboardButton("Close 🚪", callback_data="closeMessage")
-                    ],
-                    [
-                        InlineKeyboardButton("Support Group", url="https://t.me/greymatters_bots_discussion"),
-                        InlineKeyboardButton("Bots Channel", url="https://t.me/greymatter_bots")
-                    ]
-                ]
-            )
-        )
-
-    elif "refreshForceSub" in cb_data:
+    
+    if "refreshForceSub" in cb_data:
         if Config.UPDATES_CHANNEL:
             if Config.UPDATES_CHANNEL.startswith("-100"):
                 channel_chat_id = int(Config.UPDATES_CHANNEL)
@@ -379,7 +313,7 @@ async def button(bot: Client, cmd: CallbackQuery):
                 user = await bot.get_chat_member(channel_chat_id, cmd.message.chat.id)
                 if user.status == "kicked":
                     await cmd.message.edit(
-                        text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/greymatters_bots_discussion).",
+                        text="Sorry Sir, You are Banned to use me.",
                         disable_web_page_preview=True
                     )
                     return
@@ -401,7 +335,7 @@ async def button(bot: Client, cmd: CallbackQuery):
                 return
             except Exception:
                 await cmd.message.edit(
-                    text="Something went Wrong. Contact my [Support Group](https://t.me/greymatters_bots_discussion).",
+                    text="Something went Wrong.",
                     disable_web_page_preview=True
                 )
                 return
@@ -411,12 +345,7 @@ async def button(bot: Client, cmd: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("Support Group", url="https://t.me/greymatters_bots_discussion"),
-                        InlineKeyboardButton("Bots Channel", url="https://t.me/greymatter_bots")
-                    ],
-                    [
-                        InlineKeyboardButton("About Bot", callback_data="aboutbot"),
-                        InlineKeyboardButton("About Dev", callback_data="aboutdevs")
+                        InlineKeyboardButton("Updates Channel", url="https://t.me/master793")
                     ]
                 ]
             )
