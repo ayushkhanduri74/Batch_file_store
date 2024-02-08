@@ -1,6 +1,7 @@
-# (c) @AbirHasan2005 | @PredatorHackerzZ
-
 import asyncio
+import requests
+import string
+import random
 from configs import Config
 from pyrogram import Client
 from pyrogram.types import Message
@@ -12,7 +13,7 @@ async def reply_forward(message: Message, file_id: int):
     try:
         await message.reply_text(
             f"**Here is Sharable Link of this file:**\n"
-            f"https://t.me/{Config.BOT_USERNAME}?start=GreyMatter_{str_to_b64(str(file_id))}\n\n"
+            f"https://t.me/{Config.BOT_USERNAME}?start=MASTER793_{str_to_b64(str(file_id))}\n\n"
             f"__To Retrive the Stored File, just open the link!__",
             disable_web_page_preview=True, quote=True)
     except FloodWait as e:
