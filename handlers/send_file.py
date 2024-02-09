@@ -12,7 +12,7 @@ from handlers.helpers import str_to_b64
 async def reply_forward(message: Message, file_id: int):
     try:
         await message.reply_text(
-            f"<b>Tʜᴀɴᴋᴜ Fᴏʀ Uꜱɪɴɢ <a href=https://t.me/PublicXFilesBot>[PᴜʙʟɪᴄXFɪʟᴇꜱBᴏᴛ]</a></b>",
+            f"",
             disable_web_page_preview=False, quote=False)
     except FloodWait as e:
         await asyncio.sleep(e.value)
